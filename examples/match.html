@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动物分类配对练习</title>
+<style>
+:root {
+  --ink: #1f2933;
+  --muted: #52606d;
+  --line: #d9e2ec;
+  --vert: #2f855a;
+  --vert-soft: #e6f4ea;
+  --invert: #2b6cb0;
+  --invert-soft: #e6f0fa;
+  --paper: #ffffff;
+  --bg: #f5f7fa;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 28px 16px 48px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  line-height: 1.7;
+}
+.page { width: 100%; max-width: 960px; margin: 0 auto; }
+.page-header { text-align: center; margin-bottom: 24px; }
+.page-header h1 { margin: 0 0 6px; font-size: 30px; letter-spacing: 1px; }
+.subtitle { margin: 0; color: var(--muted); }
+.tree-section { margin: 24px 0 30px; padding: 14px 16px 6px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
+.tree-section h2 { margin: 0 0 8px; font-size: 20px; }
+.tree { width: 100%; overflow-x: auto; }
+.tree svg { display: block; width: 100%; height: auto; }
+.group-section { margin: 28px 0; }
+.group-section h2 { margin: 0 0 14px; padding-left: 10px; border-left: 5px solid var(--line); font-size: 22px; }
+.vertebrate h2 { color: var(--vert); border-color: var(--vert); }
+.invertebrate h2 { color: var(--invert); border-color: var(--invert); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.vertebrate .card { border-top: 4px solid var(--vert); }
+.invertebrate .card { border-top: 4px solid var(--invert); }
+.card h3 { margin: 0 0 6px; font-size: 19px; }
+.tag { display: inline-block; margin-left: 8px; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 400; vertical-align: middle; }
+.vertebrate .tag { color: var(--vert); background: var(--vert-soft); }
+.invertebrate .tag { color: var(--invert); background: var(--invert-soft); }
+.meta { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
+.chips { margin: 6px 0 0; }
+.animal { display: inline-block; margin: 2px 4px 2px 0; padding: 1px 8px; border: 1px solid var(--line); border-radius: 999px; background: #fbfdff; font-size: 12px; }
+.table-section { margin: 32px 0; }
+.table-section h2 { margin: 0 0 12px; font-size: 22px; }
+table { width: 100%; border-collapse: collapse; background: var(--paper); font-size: 12.5px; }
+th, td { border: 1px solid var(--line); padding: 7px 9px; vertical-align: top; text-align: left; }
+th { background: #eef2f7; }
+.footer { margin-top: 36px; text-align: center; color: var(--muted); font-size: 12px; }
+.quiz-item, .match-col { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; }
+.question { margin: 0 0 10px; font-weight: 600; }
+.number { margin-right: 6px; }
+.options { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; }
+.option { padding: 4px 0; }
+.label { display: inline-block; width: 22px; color: var(--muted); font-weight: 600; }
+.answer-line { margin: 10px 0 0; color: var(--muted); }
+.answer { margin: 10px 0 2px; color: var(--vert); }
+.explanation { margin: 0; color: var(--muted); font-size: 13px; }
+.match-hint { color: var(--muted); margin: 0 0 18px; }
+.match-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.match-col h2 { margin: 0 0 10px; font-size: 17px; }
+.match-col ol { list-style: none; margin: 0; padding: 0; }
+.match-col li { padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.match-col li:last-child { border-bottom: none; }
+.blank { color: var(--muted); margin-right: 6px; }
+@page { size: A4 }
+@page { margin: 14mm; }
+@media print {
+  body { background: #ffffff; padding: 0; }
+  .page { max-width: none; }
+  .card, .quiz-item, .match-col, .table-section, .tree-section { break-inside: avoid; }
+  .card, .quiz-item, .match-col { box-shadow: none; }
+  .option { border-bottom: 1px dotted #cbd2d9; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="page-header"><h1>动物分类配对练习</h1><p class="subtitle">共 8 组配对 · 把右侧字母写在左侧括号内</p></header>
+<p class="match-hint">将左侧的代表动物与右侧的动物类别配对。</p>
+<div class="match-columns">
+<section class="match-col"><h2>代表动物</h2><ol><li><span class="blank">（　）</span>螨虫</li><li><span class="blank">（　）</span>袋鼠</li><li><span class="blank">（　）</span>水蚤</li><li><span class="blank">（　）</span>乌龟</li><li><span class="blank">（　）</span>丹顶鹤</li><li><span class="blank">（　）</span>捕鸟蛛</li><li><span class="blank">（　）</span>鳄鱼</li><li><span class="blank">（　）</span>牛蛙</li></ol></section>
+<section class="match-col"><h2>动物类别</h2><ol><li><span class="label">A.</span>两栖类</li><li><span class="label">B.</span>哺乳类</li><li><span class="label">C.</span>爬行类</li><li><span class="label">D.</span>甲壳类</li><li><span class="label">E.</span>蛛形类</li><li><span class="label">F.</span>鸟类</li></ol></section>
+</div>
+<footer class="footer">animalclassification · MIT © 2026 eastyou</footer>
+</main>
+</body>
+</html>

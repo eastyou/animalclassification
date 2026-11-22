@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动物分类海报</title>
+<style>
+:root {
+  --ink: #1f2933;
+  --muted: #52606d;
+  --line: #d9e2ec;
+  --vert: #2f855a;
+  --vert-soft: #e6f4ea;
+  --invert: #2b6cb0;
+  --invert-soft: #e6f0fa;
+  --paper: #ffffff;
+  --bg: #f5f7fa;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 28px 16px 48px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  line-height: 1.7;
+}
+.page { width: 100%; max-width: 960px; margin: 0 auto; }
+.page-header { text-align: center; margin-bottom: 24px; }
+.page-header h1 { margin: 0 0 6px; font-size: 30px; letter-spacing: 1px; }
+.subtitle { margin: 0; color: var(--muted); }
+.tree-section { margin: 24px 0 30px; padding: 14px 16px 6px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
+.tree-section h2 { margin: 0 0 8px; font-size: 20px; }
+.tree { width: 100%; overflow-x: auto; }
+.tree svg { display: block; width: 100%; height: auto; }
+.group-section { margin: 28px 0; }
+.group-section h2 { margin: 0 0 14px; padding-left: 10px; border-left: 5px solid var(--line); font-size: 22px; }
+.vertebrate h2 { color: var(--vert); border-color: var(--vert); }
+.invertebrate h2 { color: var(--invert); border-color: var(--invert); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.vertebrate .card { border-top: 4px solid var(--vert); }
+.invertebrate .card { border-top: 4px solid var(--invert); }
+.card h3 { margin: 0 0 6px; font-size: 19px; }
+.tag { display: inline-block; margin-left: 8px; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 400; vertical-align: middle; }
+.vertebrate .tag { color: var(--vert); background: var(--vert-soft); }
+.invertebrate .tag { color: var(--invert); background: var(--invert-soft); }
+.meta { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
+.chips { margin: 6px 0 0; }
+.animal { display: inline-block; margin: 2px 4px 2px 0; padding: 1px 8px; border: 1px solid var(--line); border-radius: 999px; background: #fbfdff; font-size: 12px; }
+.table-section { margin: 32px 0; }
+.table-section h2 { margin: 0 0 12px; font-size: 22px; }
+table { width: 100%; border-collapse: collapse; background: var(--paper); font-size: 12.5px; }
+th, td { border: 1px solid var(--line); padding: 7px 9px; vertical-align: top; text-align: left; }
+th { background: #eef2f7; }
+.footer { margin-top: 36px; text-align: center; color: var(--muted); font-size: 12px; }
+.quiz-item, .match-col { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; }
+.question { margin: 0 0 10px; font-weight: 600; }
+.number { margin-right: 6px; }
+.options { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; }
+.option { padding: 4px 0; }
+.label { display: inline-block; width: 22px; color: var(--muted); font-weight: 600; }
+.answer-line { margin: 10px 0 0; color: var(--muted); }
+.answer { margin: 10px 0 2px; color: var(--vert); }
+.explanation { margin: 0; color: var(--muted); font-size: 13px; }
+.match-hint { color: var(--muted); margin: 0 0 18px; }
+.match-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.match-col h2 { margin: 0 0 10px; font-size: 17px; }
+.match-col ol { list-style: none; margin: 0; padding: 0; }
+.match-col li { padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.match-col li:last-child { border-bottom: none; }
+.blank { color: var(--muted); margin-right: 6px; }
+@page { size: A4 }
+@page { margin: 14mm; }
+@media print {
+  body { background: #ffffff; padding: 0; }
+  .page { max-width: none; }
+  .card, .quiz-item, .match-col, .table-section, .tree-section { break-inside: avoid; }
+  .card, .quiz-item, .match-col { box-shadow: none; }
+  .option { border-bottom: 1px dotted #cbd2d9; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="page-header"><h1>动物分类海报</h1><p class="subtitle">87 种动物 · 11 个类别 · A4 可打印</p></header>
+<section class="tree-section"><h2>分类树</h2><div class="tree"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 312" width="100%" role="img" aria-label="动物分类树">
+<style>text{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;}</style>
+<rect x="0" y="0" width="1000" height="312" fill="#ffffff"/>
+<rect x="430" y="12" width="140" height="42" rx="21" fill="#334e68"/>
+<text x="500" y="39" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">动物</text>
+<line x1="500" y1="54" x2="500" y2="88" stroke="#9fb3c8" stroke-width="2"/>
+<line x1="250" y1="88" x2="750" y2="88" stroke="#9fb3c8" stroke-width="2"/>
+<line x1="250" y1="88" x2="250" y2="116" stroke="#2f855a" stroke-width="2"/>
+<rect x="130" y="116" width="240" height="46" rx="10" fill="#e6f4ea" stroke="#2f855a"/>
+<text x="250" y="137" text-anchor="middle" font-size="15" font-weight="700" fill="#2f855a">脊椎动物</text>
+<text x="250" y="154" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">5 类 · 45 种</text>
+<line x1="250" y1="162" x2="250" y2="204" stroke="#2f855a" stroke-width="2"/>
+<line x1="750" y1="88" x2="750" y2="116" stroke="#2b6cb0" stroke-width="2"/>
+<rect x="630" y="116" width="240" height="46" rx="10" fill="#e6f0fa" stroke="#2b6cb0"/>
+<text x="750" y="137" text-anchor="middle" font-size="15" font-weight="700" fill="#2b6cb0">无脊椎动物</text>
+<text x="750" y="154" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">6 类 · 42 种</text>
+<line x1="750" y1="162" x2="750" y2="204" stroke="#2b6cb0" stroke-width="2"/>
+<line x1="82" y1="204" x2="418" y2="204" stroke="#2f855a" stroke-width="2"/>
+<line x1="82" y1="204" x2="82" y2="232" stroke="#2f855a" stroke-width="2"/>
+<rect x="45" y="232" width="74" height="58" rx="8" fill="#e6f4ea" stroke="#2f855a"/>
+<text x="82" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2f855a">鱼类</text>
+<text x="82" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">9 种</text>
+<line x1="166" y1="204" x2="166" y2="232" stroke="#2f855a" stroke-width="2"/>
+<rect x="129" y="232" width="74" height="58" rx="8" fill="#e6f4ea" stroke="#2f855a"/>
+<text x="166" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2f855a">两栖类</text>
+<text x="166" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">9 种</text>
+<line x1="250" y1="204" x2="250" y2="232" stroke="#2f855a" stroke-width="2"/>
+<rect x="213" y="232" width="74" height="58" rx="8" fill="#e6f4ea" stroke="#2f855a"/>
+<text x="250" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2f855a">爬行类</text>
+<text x="250" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">9 种</text>
+<line x1="334" y1="204" x2="334" y2="232" stroke="#2f855a" stroke-width="2"/>
+<rect x="297" y="232" width="74" height="58" rx="8" fill="#e6f4ea" stroke="#2f855a"/>
+<text x="334" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2f855a">鸟类</text>
+<text x="334" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">9 种</text>
+<line x1="418" y1="204" x2="418" y2="232" stroke="#2f855a" stroke-width="2"/>
+<rect x="381" y="232" width="74" height="58" rx="8" fill="#e6f4ea" stroke="#2f855a"/>
+<text x="418" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2f855a">哺乳类</text>
+<text x="418" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">9 种</text>
+<line x1="540" y1="204" x2="960" y2="204" stroke="#2b6cb0" stroke-width="2"/>
+<line x1="540" y1="204" x2="540" y2="232" stroke="#2b6cb0" stroke-width="2"/>
+<rect x="503" y="232" width="74" height="58" rx="8" fill="#e6f0fa" stroke="#2b6cb0"/>
+<text x="540" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">昆虫</text>
+<text x="540" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">7 种</text>
+<line x1="624" y1="204" x2="624" y2="232" stroke="#2b6cb0" stroke-width="2"/>
+<rect x="587" y="232" width="74" height="58" rx="8" fill="#e6f0fa" stroke="#2b6cb0"/>
+<text x="624" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">蛛形类</text>
+<text x="624" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">7 种</text>
+<line x1="708" y1="204" x2="708" y2="232" stroke="#2b6cb0" stroke-width="2"/>
+<rect x="671" y="232" width="74" height="58" rx="8" fill="#e6f0fa" stroke="#2b6cb0"/>
+<text x="708" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">甲壳类</text>
+<text x="708" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">7 种</text>
+<line x1="792" y1="204" x2="792" y2="232" stroke="#2b6cb0" stroke-width="2"/>
+<rect x="755" y="232" width="74" height="58" rx="8" fill="#e6f0fa" stroke="#2b6cb0"/>
+<text x="792" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">软体类</text>
+<text x="792" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">7 种</text>
+<line x1="876" y1="204" x2="876" y2="232" stroke="#2b6cb0" stroke-width="2"/>
+<rect x="839" y="232" width="74" height="58" rx="8" fill="#e6f0fa" stroke="#2b6cb0"/>
+<text x="876" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">环节类</text>
+<text x="876" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">7 种</text>
+<line x1="960" y1="204" x2="960" y2="232" stroke="#2b6cb0" stroke-width="2"/>
+<rect x="923" y="232" width="74" height="58" rx="8" fill="#e6f0fa" stroke="#2b6cb0"/>
+<text x="960" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">棘皮类</text>
+<text x="960" y="274" text-anchor="middle" font-size="11" font-weight="400" fill="#52606d">7 种</text>
+</svg></div></section>
+<section class="group-section vertebrate"><h2>脊椎动物</h2><div class="cards"><article class="card"><h3>鱼类<span class="tag">脊椎动物</span></h3><p class="meta">9 种 · 食性：草食 2 · 肉食 4 · 杂食 3</p><p class="meta">栖息环境：淡水湖泊、池塘、淡水河湖、淡水江河、湖泊、淡水河流、水库、海洋、冷水海域、近海、河口、深海、人工水池、水族箱</p><p class="chips"><span class="animal">鲫鱼</span><span class="animal">鲤鱼</span><span class="animal">草鱼</span><span class="animal">鲢鱼</span><span class="animal">鲨鱼</span><span class="animal">鳕鱼</span><span class="animal">鲈鱼</span><span class="animal">带鱼</span><span class="animal">金鱼</span></p></article><article class="card"><h3>两栖类<span class="tag">脊椎动物</span></h3><p class="meta">9 种 · 食性：肉食 9</p><p class="meta">栖息环境：稻田、池塘、潮湿陆地、草丛、山溪、岩洞、溪流、林下、树叶、灌木、池塘、沼泽、热带雨林树冠、稻田、沟渠、山间溪流</p><p class="chips"><span class="animal">青蛙</span><span class="animal">蟾蜍</span><span class="animal">大鲵</span><span class="animal">蝾螈</span><span class="animal">雨蛙</span><span class="animal">牛蛙</span><span class="animal">树蛙</span><span class="animal">虎纹蛙</span><span class="animal">东方铃蟾</span></p></article><article class="card"><h3>爬行类<span class="tag">脊椎动物</span></h3><p class="meta">9 种 · 食性：肉食 7 · 杂食 2</p><p class="meta">栖息环境：灌丛、岩石、森林、草原、农田、河流、池塘、热带河流、沼泽、房屋墙壁、树皮、热带雨林、珊瑚礁、海洋、热带雨林、沼泽、远洋</p><p class="chips"><span class="animal">蜥蜴</span><span class="animal">蛇</span><span class="animal">乌龟</span><span class="animal">鳄鱼</span><span class="animal">壁虎</span><span class="animal">变色龙</span><span class="animal">玳瑁</span><span class="animal">蟒蛇</span><span class="animal">棱皮龟</span></p></article><article class="card"><h3>鸟类<span class="tag">脊椎动物</span></h3><p class="meta">9 种 · 食性：草食 2 · 肉食 3 · 杂食 4</p><p class="meta">栖息环境：城镇、农田、城市广场、岩壁、山地、草原、南极海岸、非洲草原、湿地、芦苇荡、热带森林、热带林地、森林、农田</p><p class="chips"><span class="animal">麻雀</span><span class="animal">鸽子</span><span class="animal">老鹰</span><span class="animal">企鹅</span><span class="animal">鸵鸟</span><span class="animal">丹顶鹤</span><span class="animal">鹦鹉</span><span class="animal">孔雀</span><span class="animal">猫头鹰</span></p></article><article class="card"><h3>哺乳类<span class="tag">脊椎动物</span></h3><p class="meta">9 种 · 食性：草食 4 · 肉食 4 · 杂食 1</p><p class="meta">栖息环境：海洋、山洞、屋檐、热带草原、森林、森林、灌丛、全球各地、竹林、澳大利亚草原、草原、农田</p><p class="chips"><span class="animal">鲸</span><span class="animal">蝙蝠</span><span class="animal">大象</span><span class="animal">老虎</span><span class="animal">人类</span><span class="animal">海豚</span><span class="animal">熊猫</span><span class="animal">袋鼠</span><span class="animal">兔子</span></p></article></div></section>
+<section class="group-section invertebrate"><h2>无脊椎动物</h2><div class="cards"><article class="card"><h3>昆虫<span class="tag">无脊椎动物</span></h3><p class="meta">7 种 · 食性：草食 4 · 肉食 2 · 杂食 1</p><p class="meta">栖息环境：花丛、蜂巢、土壤、树干、花园、草地、池塘、溪流、农田、草原、树上、林地、草丛、灌木</p><p class="chips"><span class="animal">蜜蜂</span><span class="animal">蚂蚁</span><span class="animal">蝴蝶</span><span class="animal">蜻蜓</span><span class="animal">蝗虫</span><span class="animal">蝉</span><span class="animal">螳螂</span></p></article><article class="card"><h3>蛛形类<span class="tag">无脊椎动物</span></h3><p class="meta">7 种 · 食性：肉食 6 · 杂食 1</p><p class="meta">栖息环境：屋檐、草丛、沙漠、石缝、草丛、林地、床褥、土壤、热带雨林、潮湿林地、草丛、地面</p><p class="chips"><span class="animal">蜘蛛</span><span class="animal">蝎子</span><span class="animal">蜱虫</span><span class="animal">螨虫</span><span class="animal">捕鸟蛛</span><span class="animal">盲蛛</span><span class="animal">狼蛛</span></p></article><article class="card"><h3>甲壳类<span class="tag">无脊椎动物</span></h3><p class="meta">7 种 · 食性：草食 1 · 肉食 1 · 杂食 5</p><p class="meta">栖息环境：江河、海洋、河口、滩涂、海底岩礁、海岸、潮间带、潮湿落叶、石下、南大洋、池塘、湖泊</p><p class="chips"><span class="animal">虾</span><span class="animal">螃蟹</span><span class="animal">龙虾</span><span class="animal">寄居蟹</span><span class="animal">潮虫</span><span class="animal">磷虾</span><span class="animal">水蚤</span></p></article><article class="card"><h3>软体类<span class="tag">无脊椎动物</span></h3><p class="meta">7 种 · 食性：草食 1 · 肉食 3 · 杂食 3</p><p class="meta">栖息环境：花园、潮湿草地、海洋岩礁、近海、沙滩、泥滩、浅海海底、河口礁石、海洋</p><p class="chips"><span class="animal">蜗牛</span><span class="animal">章鱼</span><span class="animal">乌贼</span><span class="animal">蛤蜊</span><span class="animal">扇贝</span><span class="animal">牡蛎</span><span class="animal">鱿鱼</span></p></article><article class="card"><h3>环节类<span class="tag">无脊椎动物</span></h3><p class="meta">7 种 · 食性：肉食 2 · 杂食 5</p><p class="meta">栖息环境：土壤、淡水水域、潮间带泥沙、沙滩、淡水底泥</p><p class="chips"><span class="animal">蚯蚓</span><span class="animal">水蛭</span><span class="animal">沙蚕</span><span class="animal">沙蠋</span><span class="animal">仙女虫</span><span class="animal">缨鳃虫</span><span class="animal">颤蚓</span></p></article><article class="card"><h3>棘皮类<span class="tag">无脊椎动物</span></h3><p class="meta">7 种 · 食性：草食 1 · 肉食 4 · 杂食 2</p><p class="meta">栖息环境：珊瑚礁、潮间带、岩礁、海藻林、海底沙泥、深海、珊瑚礁、海底岩缝、潮间带岩礁、珊瑚礁沙底</p><p class="chips"><span class="animal">海星</span><span class="animal">海胆</span><span class="animal">海参</span><span class="animal">海百合</span><span class="animal">蛇尾</span><span class="animal">海盘车</span><span class="animal">海苹果</span></p></article></div></section>
+<section class="table-section"><h2>动物明细表（87 种）</h2><table><thead><tr><th>序号</th><th>动物</th><th>类别</th><th>食性</th><th>栖息环境</th><th>特征 / 趣闻</th><th>别名</th></tr></thead><tbody><tr><td>1</td><td>鲫鱼</td><td>鱼类</td><td>杂食</td><td>淡水湖泊、池塘</td><td>耐低氧，冬季可潜伏在泥中越冬</td><td>鲫</td></tr><tr><td>2</td><td>鲤鱼</td><td>鱼类</td><td>杂食</td><td>淡水河湖</td><td>口边有两对须，能探测水底食物</td><td>鲤</td></tr><tr><td>3</td><td>草鱼</td><td>鱼类</td><td>草食</td><td>淡水江河、湖泊</td><td>成年后几乎只吃水草，是典型的草食性鱼类</td><td>鲩鱼</td></tr><tr><td>4</td><td>鲢鱼</td><td>鱼类</td><td>草食</td><td>淡水河流、水库</td><td>靠鳃耙滤食浮游植物，被称为水体清道夫</td><td>白鲢</td></tr><tr><td>5</td><td>鲨鱼</td><td>鱼类</td><td>肉食</td><td>海洋</td><td>骨骼由软骨构成，一生能不断更换牙齿</td><td>沙鱼</td></tr><tr><td>6</td><td>鳕鱼</td><td>鱼类</td><td>肉食</td><td>冷水海域</td><td>下颌有一根须，用来在海底搜寻食物</td><td>大头鱼</td></tr><tr><td>7</td><td>鲈鱼</td><td>鱼类</td><td>肉食</td><td>近海、河口</td><td>背鳍硬棘锋利，捕食时能迅速冲刺</td><td>花鲈</td></tr><tr><td>8</td><td>带鱼</td><td>鱼类</td><td>肉食</td><td>深海</td><td>身体侧扁如带，靠波浪式摆动向前游动</td><td>刀鱼</td></tr><tr><td>9</td><td>金鱼</td><td>鱼类</td><td>杂食</td><td>人工水池、水族箱</td><td>由鲫鱼长期人工选育而来，品种繁多</td><td>金鲫</td></tr><tr><td>10</td><td>青蛙</td><td>两栖类</td><td>肉食</td><td>稻田、池塘</td><td>幼体蝌蚪用鳃呼吸，成体用肺和皮肤呼吸</td><td>田鸡</td></tr><tr><td>11</td><td>蟾蜍</td><td>两栖类</td><td>肉食</td><td>潮湿陆地、草丛</td><td>皮肤粗糙有疣粒，能分泌毒液防御天敌</td><td>癞蛤蟆</td></tr><tr><td>12</td><td>大鲵</td><td>两栖类</td><td>肉食</td><td>山溪、岩洞</td><td>叫声像婴儿啼哭，因此被称为娃娃鱼</td><td>娃娃鱼</td></tr><tr><td>13</td><td>蝾螈</td><td>两栖类</td><td>肉食</td><td>溪流、林下</td><td>肢体断裂后能再生出新的肢体</td><td>火螈</td></tr><tr><td>14</td><td>雨蛙</td><td>两栖类</td><td>肉食</td><td>树叶、灌木</td><td>趾端有吸盘，能攀附在叶片上</td><td>树蟾</td></tr><tr><td>15</td><td>牛蛙</td><td>两栖类</td><td>肉食</td><td>池塘、沼泽</td><td>雄性叫声洪亮似牛哞，体型较大</td><td>美国青蛙</td></tr><tr><td>16</td><td>树蛙</td><td>两栖类</td><td>肉食</td><td>热带雨林树冠</td><td>趾间有蹼，能在树间滑翔</td><td>飞蛙</td></tr><tr><td>17</td><td>虎纹蛙</td><td>两栖类</td><td>肉食</td><td>稻田、沟渠</td><td>背部有虎斑状花纹，是国家二级保护动物</td><td>泥蛙</td></tr><tr><td>18</td><td>东方铃蟾</td><td>两栖类</td><td>肉食</td><td>山间溪流</td><td>受惊时翻转身体露出鲜艳腹面警告天敌</td><td>铃蟾</td></tr><tr><td>19</td><td>蜥蜴</td><td>爬行类</td><td>肉食</td><td>灌丛、岩石</td><td>遇险时可断尾逃生，尾巴能重新长出</td><td>四脚蛇</td></tr><tr><td>20</td><td>蛇</td><td>爬行类</td><td>肉食</td><td>森林、草原、农田</td><td>靠下颌骨交替移动，吞下比头大的猎物</td><td>长虫</td></tr><tr><td>21</td><td>乌龟</td><td>爬行类</td><td>杂食</td><td>河流、池塘</td><td>背甲由肋骨和脊椎融合而成</td><td>草龟</td></tr><tr><td>22</td><td>鳄鱼</td><td>爬行类</td><td>肉食</td><td>热带河流、沼泽</td><td>咬合力极强，但张口的力量相对较弱</td><td>鳄</td></tr><tr><td>23</td><td>壁虎</td><td>爬行类</td><td>肉食</td><td>房屋墙壁、树皮</td><td>脚趾有特殊刚毛，能吸附在光滑表面</td><td>守宫</td></tr><tr><td>24</td><td>变色龙</td><td>爬行类</td><td>肉食</td><td>热带雨林</td><td>皮肤色素细胞能随情绪和环境改变颜色</td><td>避役</td></tr><tr><td>25</td><td>玳瑁</td><td>爬行类</td><td>杂食</td><td>珊瑚礁、海洋</td><td>背甲花纹美丽，是濒危保护动物</td><td>十三鳞</td></tr><tr><td>26</td><td>蟒蛇</td><td>爬行类</td><td>肉食</td><td>热带雨林、沼泽</td><td>无毒，用身体缠绕使猎物窒息</td><td>蚺蛇</td></tr><tr><td>27</td><td>棱皮龟</td><td>爬行类</td><td>肉食</td><td>远洋</td><td>是体型最大的海龟，背甲为革质而非硬壳</td><td>革龟</td></tr><tr><td>28</td><td>麻雀</td><td>鸟类</td><td>杂食</td><td>城镇、农田</td><td>常在地面跳跃前进，喜欢集群活动</td><td>家雀</td></tr><tr><td>29</td><td>鸽子</td><td>鸟类</td><td>草食</td><td>城市广场、岩壁</td><td>能利用地磁场和太阳方位辨别方向</td><td>家鸽</td></tr><tr><td>30</td><td>老鹰</td><td>鸟类</td><td>肉食</td><td>山地、草原</td><td>视力约为人类的四到五倍</td><td>鹰</td></tr><tr><td>31</td><td>企鹅</td><td>鸟类</td><td>肉食</td><td>南极海岸</td><td>翅膀特化成鳍状，能在水下高速游泳</td><td>—</td></tr><tr><td>32</td><td>鸵鸟</td><td>鸟类</td><td>杂食</td><td>非洲草原</td><td>是现存最大的鸟，不会飞但奔跑时速可达七十公里</td><td>非洲鸵鸟</td></tr><tr><td>33</td><td>丹顶鹤</td><td>鸟类</td><td>杂食</td><td>湿地、芦苇荡</td><td>头顶裸露皮肤呈鲜红色，并不是羽毛</td><td>仙鹤</td></tr><tr><td>34</td><td>鹦鹉</td><td>鸟类</td><td>草食</td><td>热带森林</td><td>能模仿人类说话，脚趾两前两后便于抓握</td><td>鹦哥</td></tr><tr><td>35</td><td>孔雀</td><td>鸟类</td><td>杂食</td><td>热带林地</td><td>雄鸟尾上覆羽展开形成眼斑求偶</td><td>蓝孔雀</td></tr><tr><td>36</td><td>猫头鹰</td><td>鸟类</td><td>肉食</td><td>森林、农田</td><td>颈部能旋转约二百七十度，飞行时几乎无声</td><td>鸮</td></tr><tr><td>37</td><td>鲸</td><td>哺乳类</td><td>肉食</td><td>海洋</td><td>用肺呼吸，鼻孔位于头顶，需定期浮出水面换气</td><td>鲸鱼</td></tr><tr><td>38</td><td>蝙蝠</td><td>哺乳类</td><td>肉食</td><td>山洞、屋檐</td><td>唯一能真正飞行的哺乳动物，靠回声定位导航</td><td>—</td></tr><tr><td>39</td><td>大象</td><td>哺乳类</td><td>草食</td><td>热带草原、森林</td><td>长鼻有数万块肌肉，能卷起树枝也能感知震动</td><td>象</td></tr><tr><td>40</td><td>老虎</td><td>哺乳类</td><td>肉食</td><td>森林、灌丛</td><td>每只老虎的条纹都独一无二，像指纹一样</td><td>虎</td></tr><tr><td>41</td><td>人类</td><td>哺乳类</td><td>杂食</td><td>全球各地</td><td>大脑发达，能制造和使用复杂工具</td><td>智人</td></tr><tr><td>42</td><td>海豚</td><td>哺乳类</td><td>肉食</td><td>海洋</td><td>用回声定位捕食，群体之间有复杂的交流方式</td><td>—</td></tr><tr><td>43</td><td>熊猫</td><td>哺乳类</td><td>草食</td><td>竹林</td><td>属于食肉目，却主要以竹子为食</td><td>大熊猫</td></tr><tr><td>44</td><td>袋鼠</td><td>哺乳类</td><td>草食</td><td>澳大利亚草原</td><td>育儿袋中的幼崽出生时只有花生米大小</td><td>大袋鼠</td></tr><tr><td>45</td><td>兔子</td><td>哺乳类</td><td>草食</td><td>草原、农田</td><td>门齿终身生长，需要不断啃咬东西磨牙</td><td>家兔</td></tr><tr><td>46</td><td>蜜蜂</td><td>昆虫</td><td>草食</td><td>花丛、蜂巢</td><td>通过八字舞告诉同伴蜜源的方向和距离</td><td>蜂</td></tr><tr><td>47</td><td>蚂蚁</td><td>昆虫</td><td>杂食</td><td>土壤、树干</td><td>能举起超过自身体重数十倍的物体</td><td>蚁</td></tr><tr><td>48</td><td>蝴蝶</td><td>昆虫</td><td>草食</td><td>花园、草地</td><td>用足感知味道，翅膀上的鳞片构成彩色花纹</td><td>蝶</td></tr><tr><td>49</td><td>蜻蜓</td><td>昆虫</td><td>肉食</td><td>池塘、溪流</td><td>复眼由上万只小眼组成，飞行时能悬停</td><td>蜻蛉</td></tr><tr><td>50</td><td>蝗虫</td><td>昆虫</td><td>草食</td><td>农田、草原</td><td>后腿发达，成群迁飞时可日行上百公里</td><td>蚂蚱</td></tr><tr><td>51</td><td>蝉</td><td>昆虫</td><td>草食</td><td>树上、林地</td><td>幼虫在地下生活多年，成虫鸣叫求偶</td><td>知了</td></tr><tr><td>52</td><td>螳螂</td><td>昆虫</td><td>肉食</td><td>草丛、灌木</td><td>前足特化为捕捉足，交配后雌性有时会吃掉雄性</td><td>刀螂</td></tr><tr><td>53</td><td>蜘蛛</td><td>蛛形类</td><td>肉食</td><td>屋檐、草丛</td><td>多数种类的丝强度高于同粗细的钢丝</td><td>蛛</td></tr><tr><td>54</td><td>蝎子</td><td>蛛形类</td><td>肉食</td><td>沙漠、石缝</td><td>尾部毒针用于捕猎和自卫，幼蝎会爬到母背上</td><td>蝎</td></tr><tr><td>55</td><td>蜱虫</td><td>蛛形类</td><td>肉食</td><td>草丛、林地</td><td>吸血时身体可以膨胀数十倍</td><td>壁虱</td></tr><tr><td>56</td><td>螨虫</td><td>蛛形类</td><td>杂食</td><td>床褥、土壤</td><td>体长常小于一毫米，肉眼难以看清</td><td>螨</td></tr><tr><td>57</td><td>捕鸟蛛</td><td>蛛形类</td><td>肉食</td><td>热带雨林</td><td>体型大，能捕食昆虫甚至小型脊椎动物</td><td>食鸟蛛</td></tr><tr><td>58</td><td>盲蛛</td><td>蛛形类</td><td>肉食</td><td>潮湿林地</td><td>身体不分头胸腹，腿极长但并不是真正的蜘蛛</td><td>长腿蛛</td></tr><tr><td>59</td><td>狼蛛</td><td>蛛形类</td><td>肉食</td><td>草丛、地面</td><td>不结网，靠视力和速度追捕猎物</td><td>地蛛</td></tr><tr><td>60</td><td>虾</td><td>甲壳类</td><td>杂食</td><td>江河、海洋</td><td>靠腹部快速屈伸后退，逃避天敌</td><td>青虾</td></tr><tr><td>61</td><td>螃蟹</td><td>甲壳类</td><td>杂食</td><td>河口、滩涂</td><td>横着走是因为关节只能向两侧弯曲</td><td>蟹</td></tr><tr><td>62</td><td>龙虾</td><td>甲壳类</td><td>肉食</td><td>海底岩礁</td><td>触角发达，可感知水流和气味</td><td>大龙虾</td></tr><tr><td>63</td><td>寄居蟹</td><td>甲壳类</td><td>杂食</td><td>海岸、潮间带</td><td>会寻找空螺壳保护柔软的腹部，并随生长换壳</td><td>寄生蟹</td></tr><tr><td>64</td><td>潮虫</td><td>甲壳类</td><td>杂食</td><td>潮湿落叶、石下</td><td>属于甲壳类，却生活在陆地上，用伪气管呼吸</td><td>鼠妇</td></tr><tr><td>65</td><td>磷虾</td><td>甲壳类</td><td>杂食</td><td>南大洋</td><td>成群生活，是蓝鲸等海洋动物的重要食物</td><td>南极虾</td></tr><tr><td>66</td><td>水蚤</td><td>甲壳类</td><td>草食</td><td>池塘、湖泊</td><td>体长约一到三毫米，靠触角划水跳跃前进</td><td>溞</td></tr><tr><td>67</td><td>蜗牛</td><td>软体类</td><td>草食</td><td>花园、潮湿草地</td><td>齿舌上有上万颗微小牙齿，用来刮食植物</td><td>陆螺</td></tr><tr><td>68</td><td>章鱼</td><td>软体类</td><td>肉食</td><td>海洋岩礁</td><td>有八条腕足和三个心脏，能改变体色伪装</td><td>八爪鱼</td></tr><tr><td>69</td><td>乌贼</td><td>软体类</td><td>肉食</td><td>近海</td><td>遇险时喷出墨汁迷惑天敌，被称为海中火箭</td><td>墨鱼</td></tr><tr><td>70</td><td>蛤蜊</td><td>软体类</td><td>杂食</td><td>沙滩、泥滩</td><td>用斧足钻沙，靠水管滤食水中浮游生物</td><td>花蛤</td></tr><tr><td>71</td><td>扇贝</td><td>软体类</td><td>杂食</td><td>浅海海底</td><td>依靠贝壳开合喷水推进，部分种类有数十只小眼</td><td>海扇</td></tr><tr><td>72</td><td>牡蛎</td><td>软体类</td><td>杂食</td><td>河口礁石</td><td>能分泌珍珠质包裹异物，形成珍珠</td><td>生蚝</td></tr><tr><td>73</td><td>鱿鱼</td><td>软体类</td><td>肉食</td><td>海洋</td><td>身体呈火箭形，靠喷水推进快速游动</td><td>枪乌贼</td></tr><tr><td>74</td><td>蚯蚓</td><td>环节类</td><td>杂食</td><td>土壤</td><td>吞食泥土中的有机物，能改良土壤结构</td><td>曲蟮</td></tr><tr><td>75</td><td>水蛭</td><td>环节类</td><td>肉食</td><td>淡水水域</td><td>唾液含有抗凝血物质，曾被用于医疗</td><td>蚂蟥</td></tr><tr><td>76</td><td>沙蚕</td><td>环节类</td><td>肉食</td><td>潮间带泥沙</td><td>生殖期会变换体色并游向海面</td><td>海蜈蚣</td></tr><tr><td>77</td><td>沙蠋</td><td>环节类</td><td>杂食</td><td>沙滩</td><td>用触手收集沙中有机碎屑，排出成堆沙粪</td><td>沙虫</td></tr><tr><td>78</td><td>仙女虫</td><td>环节类</td><td>杂食</td><td>淡水底泥</td><td>身体细长透明，是水质监测的指示生物</td><td>白虫</td></tr><tr><td>79</td><td>缨鳃虫</td><td>环节类</td><td>杂食</td><td>潮间带泥沙</td><td>住在自己分泌的黏质管中，只露出触手取食</td><td>管沙蚕</td></tr><tr><td>80</td><td>颤蚓</td><td>环节类</td><td>杂食</td><td>淡水底泥</td><td>身体不停摆动以增加呼吸水流，常被用作鱼饲料</td><td>红虫</td></tr><tr><td>81</td><td>海星</td><td>棘皮类</td><td>肉食</td><td>珊瑚礁、潮间带</td><td>腕足断裂后能再生，部分种类可分裂繁殖</td><td>星鱼</td></tr><tr><td>82</td><td>海胆</td><td>棘皮类</td><td>草食</td><td>岩礁、海藻林</td><td>体表棘刺可防御天敌，管足用于移动和吸附</td><td>海栗</td></tr><tr><td>83</td><td>海参</td><td>棘皮类</td><td>杂食</td><td>海底沙泥</td><td>遇险时会把内脏喷出迷惑天敌，之后再生</td><td>刺参</td></tr><tr><td>84</td><td>海百合</td><td>棘皮类</td><td>肉食</td><td>深海、珊瑚礁</td><td>外形像植物，其实是动物，用羽状腕足滤食</td><td>海羽</td></tr><tr><td>85</td><td>蛇尾</td><td>棘皮类</td><td>肉食</td><td>海底岩缝</td><td>五条细长腕足灵活卷曲，英文名意为脆星</td><td>阳遂足</td></tr><tr><td>86</td><td>海盘车</td><td>棘皮类</td><td>肉食</td><td>潮间带岩礁</td><td>是海星的一种，腕足短而粗，再生能力强</td><td>多棘海盘车</td></tr><tr><td>87</td><td>海苹果</td><td>棘皮类</td><td>杂食</td><td>珊瑚礁沙底</td><td>受惊时喷出黏性管状物自卫</td><td>—</td></tr></tbody></table></section>
+<footer class="footer">animalclassification · MIT © 2026 eastyou</footer>
+</main>
+</body>
+</html>
